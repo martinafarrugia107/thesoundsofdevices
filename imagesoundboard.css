@@ -1,0 +1,45 @@
+h1 {
+  color: blue;
+  position: absolute;
+  font-size: xx-large;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  top: 30px;
+  left: 420px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 0px;
+  padding-bottom: 100px;
+}
+h2 {
+  color: blue;
+  position: absolute;
+  font-size: small;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  top: 720px;
+  left: 460px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 0px;
+  padding-bottom: 100px;
+}
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+img {
+  width: 260px;
+  height: auto;
+  cursor: pointer;
+}
+
+.red-filter {
+  filter: brightness(0) saturate(100%) invert(25%) sepia(100%) saturate(750%)
+    hue-rotate(-50deg) brightness(1.2) contrast(1);
+}

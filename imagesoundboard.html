@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="imagesoundboard.css" />
+    <title>soundboard</title>
+  </head>
+  <body>
+    <h1>the sounds of devices</h1>
+    <h2>
+      1.click on each device to hear its sound
+      <br />
+      2.click on the object again to pause
+    </h2>
+    <div class="row">
+      <div class="column">
+        <img src="mouse.png" alt="Click Image 2" data-sound="mouse.mp3" />
+        <img src="computer.png" alt="Click Image 1" data-sound="computeron.mp3" />
+        <img src="keyboard.png" alt="Click Image 3" data-sound="keyboard.mp3" />
+      </div>
+    <div class="row">
+    <div class="column">
+    <img src="laptop.png" alt="Click Image 1" data-sound="laptopslam.mp3" />
+    <img src="printer.png" alt="Click Image 3" data-sound="laserprinter.mp3" />
+    <img src="scanner.png" alt="Click Image 3" data-sound="scanner.mp3" />
+  </div>
+
+    <!-- Script for click sound and color change functionality -->
+    <script>
+      console.log("im alive"); //console log for inspector
+      // tracking audio elements for each image
+      const audioMap = new Map();
+
+      // event listeners to all images
+      const images = document.querySelectorAll("img");
+
+      images.forEach((image) => {
+        const soundSrc = image.getAttribute("data-sound");
+
+        // Initialize a new Audio object for each image and store it in the map
+        const audio = new Audio(soundSrc);
+        audioMap.set(image, audio);
+
+        audio.addEventListener(
+          "ended",
+          function () {
+            audio.currentTime = 0;
+            image.classList.remove("red-filter");
+
+            console.log("ended: " + soundSrc);
+          },
+          false
+        );
+
+        // click event listener for each image
+        image.addEventListener("click", function () {
+          if (audio.paused) {
+            audio.play(); // Play the sound if it's paused
+            console.log("play: " + soundSrc);
+            image.classList.add("red-filter");
+          } else {
+            audio.pause(); // pause the sound if it's already playing
+            console.log("pause: " + soundSrc); // reset the sound to the beginning
+            audio.currentTime = 0;
+            image.classList.remove("red-filter"); //removes the red filter when the sound turns off
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
