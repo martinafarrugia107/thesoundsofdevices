@@ -25,8 +25,7 @@
     <img src="printer.png" alt="Click Image 3" data-sound="laserprinter.mp3" />
     <img src="scanner.png" alt="Click Image 3" data-sound="scanner.mp3" />
   </div>
-
-    <!-- Script for click sound and color change functionality -->
+      
     <script>
       console.log("im alive"); //console log for inspector
       // tracking audio elements for each image
@@ -38,7 +37,7 @@
       images.forEach((image) => {
         const soundSrc = image.getAttribute("data-sound");
 
-        // Initialize a new Audio object for each image and store it in the map
+        // sets a new audio for each image and stores it
         const audio = new Audio(soundSrc);
         audioMap.set(image, audio);
 
@@ -53,17 +52,17 @@
           false
         );
 
-        // click event listener for each image
+        // clicking function
         image.addEventListener("click", function () {
           if (audio.paused) {
-            audio.play(); // Play the sound if it's paused
+            audio.play(); // play the sound if it's paused
             console.log("play: " + soundSrc);
             image.classList.add("red-filter");
           } else {
             audio.pause(); // pause the sound if it's already playing
             console.log("pause: " + soundSrc); // reset the sound to the beginning
             audio.currentTime = 0;
-            image.classList.remove("red-filter"); //removes the red filter when the sound turns off
+            image.classList.remove("red-filter"); //removes red filter when the sound turns off
           }
         });
       });
